@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faina demo</title>
+    <style>
+        :root {
+            --small-side: min(100vh, 100vw);
+        }
+
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        img {
+            max-height: var(--small-side);
+            max-width: var(--small-side);
+            aspect-ratio: 1;
+        }
+
+        #container {
+            width: fit-content;
+            margin: auto;
+            position: relative;
+        }
+
+        #subject-container {
+            position: absolute;
+            top: 42%;
+            left: 0%;
+            width: calc(var(--small-side) / 2.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #subject {
+            font-size: calc(var(--small-side) / 20);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <img src="./faina.jpg">
+        <div id="subject-container">
+            <div id="subject"></div>
+        </div>
+    </div>
+    <script>
+        const words = ['пизды', 'пи**ды', '', 'утюг', 'перчатки', 'повышение', 'квартиру', 'отпуск', 'леща'];
+        let counter = 0;
+        const changeWord = () => {
+            document.getElementById('subject').textContent = words[++counter % words.length];
+            requestAnimationFrame(changeWord);
+        }
+        changeWord();
+    </script>
+</body>
+
+</html>
